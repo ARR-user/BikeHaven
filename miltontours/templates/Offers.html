@@ -1,0 +1,119 @@
+
+
+{% extends 'base.html' %}
+
+{% block main %}
+  <div class="container mt-4">
+   
+    
+    <div class="container mt-4">
+        <div>
+            <h1>{{ tour.name }}</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="carouselExampleAutoplaying" class="carousel slide" data-ride="carousel">
+                   
+                    <!-- Carousel slides  -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{{ url_for('static', filename='img/' + (tour.image1 or 'default.jpg')) }}" alt="Image 1"   style="max-width: 100%; height: auto;">
+    
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/kawasakis1.jpg" alt="Slide 1" style="max-width: 100%; height: auto;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/kawasakis2.jpg" alt="Slide 1" style="max-width: 100%; height: auto;">
+                        </div>
+                    </div>
+    
+                    <a class="carousel-control-prev" href="#carouselExampleAutoplaying" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+    
+                    <a class="carousel-control-next" href="#carouselExampleAutoplaying" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+    
+                </div>
+            </div>
+    
+    <div class="col-md-6">
+        <!-- product details section -->
+        <section class="product-details">
+            <div class="product-description">
+                <h2>Series</h2>
+                <p>{{ tour.name }}  </p>
+            </div>
+
+            <div class="product-specs">
+                <h2>Description</h2>
+                <ul>
+                    <li>  {{ tour.description }}</li>
+                    </ul>
+            </div>
+
+            <div class="product-cost">
+                <h2>Cost</h2><s>18999.00 $</s>
+                <p> NOW ONLY {{ tour.price }}$</p>
+                <form action="{{ url_for('main.order') }}">
+                    <input type="hidden" id="tour_id" name="tour_id" value="{{ tour.id }}">
+                    <input class="btn btn-primary" type="submit" value="Add to Basket">
+                
+                </form>
+               
+            </div>
+
+        </section>
+    </div>
+    
+          <!-- Accordion -->
+          <div class="col-md-12 " >
+            <h2>Specifications</h2>
+            <div id="accordion{{ tour.id }}">
+                <div class="card">
+                    <div class="card-header" id="heading{{ tour.id }}">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ tour.id }}" aria-expanded="false" aria-controls="collapse{{ tour.id }}">
+                                {{ tour.accordionName }}
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapse{{ tour.id }}" class="collapse" aria-labelledby="heading{{ tour.id }}" data-parent="#accordion{{ tour.id }}">
+                        <div class="card-body">
+                            
+                            <!-- Add a table here -->
+                            <table class="table">
+                                <thead>
+                                   
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ tour.accordioncol1 }}</td>
+                                        <td>{{ tour.accordioncol2 }}</td>
+                                        <!-- Add more fields from the database as needed -->
+                                    </tr>
+                                    <tr>
+                                        <td>{{ tour.accordionrow1 }} </td>
+                                        <td>{{ tour.accordionrow2 }}</td>
+                                        <!-- Add more fields from the database as needed -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="disclaimer"></p>
+            <p class="disclaimer">**Curb weight includes all necessary materials and fluids to operate correctly, full tank of fuel (more than 90 percent capacity) and tool kit (if supplied).</p>
+            <p class="disclaimer">BIKE HAVEN CARES: Always wear a helmet, eye protection, and proper apparel. Never ride under the influence of drugs or alcohol. Read Owner’s Manual and all on-product warnings. Professional rider shown on a closed course. </p>
+            <p class="disclaimer">Specifications subject to change.</p>
+    </div>
+            
+    </div>
+    <!-- Other tour details -->
+  </div>
+{% endblock %}

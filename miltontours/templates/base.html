@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bike Haven</title>
+    <meta name="description" content="Bike Haven">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- putting header inside container will prevent full width navbar -->
+
+    <header>
+
+        <!--navbar creates a navigation bar -->
+        <!-- Colours https://getbootstrap.com/docs/4.6/utilities/colors/ -->
+
+        <nav class="navbar navbar-expand-lg navbar-light" style= "background-color: #565c64;">
+
+            <a class="navbar-brand text-light" href="{{url_for('main.index')}}">
+                
+              Bike Haven
+            </a>
+
+            <!-- create a button for collapsing the menu -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <!-- individual menu item-->
+                <a class="nav-item nav-link text-light active" href="{{url_for('main.Aboutus')}}">About Us</a>
+
+                <!-- individual menu item-->
+                <a class="nav-item nav-link text-light" href="{{url_for('main.index', _anchor='cities_anchor')}}">Bikes</a>
+
+                <!-- individual menu item-->
+                <a class="nav-item nav-link text-light" href="{{url_for('main.order')}}">Basket</a>
+
+                <!-- individual menu item-->
+                <!-- this link will lead to Offers.html and offers functionality  -->
+                <a class="nav-item nav-link text-light" href="{{url_for('main.Offers', tour_id=16)}}">Offers</a>
+
+                <!-- right aligned menu items thanks to ml-auto -->
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <!-- text like phone number -->
+                        <span class="navbar-text text-light">1-800-BIKE</span>
+                    </li>
+                    <li>
+                        
+                    </li>
+                </ul>
+
+        </nav>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="alert alert-primary m-2" role="alert">
+            {% for message in messages %}
+                {{message}}
+            {% endfor %}
+            </div>
+        {% endif %}
+        {% endwith %} 
+
+        {% block head %}
+        
+        {% endblock %}
+        
+        
+    </header>
+    
+
+
+    <!-- main page content goes in container -->
+    <div class="container-fluid">
+        <main>
+            {% block main %}
+            
+
+
+
+
+
+            {% endblock %}
+        </main>
+    </div>
+
+    <!-- Footer -->
+   
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Online Orders Helpline:</h4>
+                    <p>
+                        +91 98215 43088
+                        +91 11 4011 5246.</p>
+                    <h4>Customer Care Number:</h4>
+                    <p>
+                        +91 87250 60021</p>
+                    <h4>On-Road Assistance Helpline:</h4>
+                    <p>
+                        +91 87250 28899
+                        +91 87250 28882</p>
+                </div>
+                <div class="col-md-6">                                        
+                            <p>
+                                At Bike Haven, the adventure begins. Join us on the road to excitement, freedom, and the exhilarating world of motorcycling.</p>
+                                
+                                <h4> TEST RIDE ONLY DURING </h4>
+                                <p> 09:00 TO 05:00 AEST</p>
+                    
+                
+            </div>
+        </div>
+        
+    </footer>
+       <!-- Second Footer -->
+       <footer class="custom-footer py-4 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Follow Us on Socials</h4>
+                    <p>
+                        Facebook / Instagram / Twitter / Youtube<br>
+
+                        <ul class="list-inline">
+                            <li class="list-inline-item"> <img src="{{url_for('static', filename='img/social-media.png')}}"  alt="Social Icon" width="32" height="32"></li>
+                            
+                        </ul>
+  
+                    </p>
+                    
+                </div>
+                <div class="col-md-4">
+                    <h4>Contact Us</h4>
+                    <p>
+                        123 Biker Street<br>
+                        Brisbane,QLD 4000<br>
+                        Australia
+                    </p>
+                </div>
+               
+                <div class="col-md-4">
+                    <h4>Professional Affiliations and Memberships</h4>
+                    <ul>
+                        <li>Professional Bike Association</li>
+                        <li>National Bikers Club</li>
+                        <li>International  MotoCross Biking Association</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <footer>
+        <div class="bg-secondary text-light text-center py-2">
+            &copy; 2023 Aswin
+        </div>
+    <!-- Footer -->
+
+
+    <!-- jQuery first, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

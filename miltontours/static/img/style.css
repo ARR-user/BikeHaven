@@ -1,0 +1,37 @@
+        /* to place border around items in the shopping basket - orders.html */
+        .my-row {
+            border: 1px solid grey;
+        }
+
+        /* Custom CSS to style the cards */
+.custom-card {
+    border: 1px solid transparent; 
+    background-color: transparent; 
+    position: relative; 
+    
+    border-radius: 10px; /* You can adjust the radius  */
+  
+
+}
+
+.custom-left-card {
+    background-color:transparent; 
+    margin: -15px;
+    position: relative; 
+}
+
+.custom-right-card {
+    background-color: transparent; 
+    margin: -15px; 
+    position: relative; 
+}
+.custom-button {
+    border-radius: 10px; /* You can adjust the radius as needed */
+    /* Other button styles here */
+}
+
+.divider-line {
+    border: 1px solid #131313; /* Customize the style, color, and size of the line */
+    margin: 10px 0; /* Adjust the margin to control the space between the cards and the line */
+}
+
